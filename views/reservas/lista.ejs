@@ -1,0 +1,10 @@
+<div class="titulo-fila"><div><span class="etiqueta"><%= seccion %></span><h1>Reservas registradas</h1><p>Consultá los turnos actuales de la biblioteca.</p></div><a class="boton" href="/reservas/nueva">+ Nueva reserva</a></div>
+<% if (reservas.length === 0) { %>
+  <section class="tarjeta"><h2>Todavía no hay reservas</h2><p>Podés crear la primera desde el formulario.</p><a href="/reservas/nueva">Crear reserva</a></section>
+<% } else { %>
+  <div class="rejilla">
+    <% reservas.forEach((reserva) => { %>
+      <article class="tarjeta"><span class="etiqueta">Reserva #<%= reserva.id %></span><h2><%= reserva.sala %></h2><p><strong>Estudiante:</strong> <%= reserva.estudiante %></p><p><strong>Fecha:</strong> <%= reserva.fecha %></p><p><strong>Turno:</strong> <%= reserva.turno %></p><a href="/reservas/<%= reserva.id %>">Ver detalle →</a></article>
+    <% }) %>
+  </div>
+<% } %>
